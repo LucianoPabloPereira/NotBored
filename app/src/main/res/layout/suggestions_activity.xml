@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+
+    <TextView
+        android:id="@+id/activityTV"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/background_text"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="cathegory" />
+
+    <ImageView
+        android:id="@+id/backArrowIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintBottom_toBottomOf="@+id/activityTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activityTV" />
+
+    <TextView
+        android:id="@+id/suggestedActivityTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:text="@string/suggested_activity"
+        android:textColor="@color/text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activityTV"
+        />
+
+    <ImageView
+        android:id="@+id/participantsIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/participants"
+        app:layout_constraintBottom_toBottomOf="@+id/participantsTV"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/participantsTV" />
+
+    <TextView
+        android:id="@+id/participantsTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:gravity="start"
+        android:text="@string/participants"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toEndOf="@+id/participantsIV"
+        app:layout_constraintTop_toBottomOf="@+id/suggestedActivityTV" />
+
+    <TextView
+        android:id="@+id/amountOfParticipants"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="24dp"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/participantsTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingEnd="64dp"
+        app:layout_constraintTop_toTopOf="@+id/participantsTV"
+        tools:text="4" />
+
+    <TextView
+        android:id="@+id/priceTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:gravity="start"
+        android:text="@string/price"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/priceIV"
+        app:layout_constraintTop_toBottomOf="@+id/participantsTV" />
+
+    <ImageView
+        android:id="@+id/priceIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/price"
+        app:layout_constraintBottom_toBottomOf="@+id/priceTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/priceTV" />
+
+    <TextView
+        android:id="@+id/PriceShowedTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="24dp"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        android:paddingEnd="64dp"
+        app:layout_constraintBottom_toBottomOf="@+id/priceTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/priceTV"
+        tools:text="medium" />
+
+    <TextView
+        android:id="@+id/randomActivityTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:gravity="start"
+        android:text="@string/type"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/randomActivityIV"
+        app:layout_constraintTop_toBottomOf="@+id/priceTV" />
+
+    <ImageView
+        android:id="@+id/randomActivityIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/random"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/randomActivityTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/randomActivityTV" />
+
+    <TextView
+        android:id="@+id/randomActivityShowedTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="24dp"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        android:paddingEnd="64dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/randomActivityTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/randomActivityTV"
+        tools:text="activity" />
+
+    <Button
+        android:id="@+id/tryAnotherB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/background_button"
+        android:text="try another"
+        android:textColor="@color/text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/randomActivityTV" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
