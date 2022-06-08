@@ -61,7 +61,7 @@ class ActivitiesActivity : AppCompatActivity(), OnItemClickListener {
 
     override fun onItemClick(category: String) {
         sharedPreference.setCategory(category)
-        val intent = Intent(this, ActivitiesActivity::class.java)
+        val intent = Intent(this, SuggestionActivity::class.java)
         startActivity(intent)
     }
 }
