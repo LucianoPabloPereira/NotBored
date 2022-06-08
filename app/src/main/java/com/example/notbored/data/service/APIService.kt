@@ -14,7 +14,6 @@ interface APIService {
     @GET("activity")
     fun getActivityByParticipants(@Query("participants") participants : Int) : Call<ActivityModel>
 
-    @GET("activity/type={value}&participants={value2}")
-    fun getActivityByTypeAndParticipants(@Path ("value")  value : String, @Path ("value2") value2 : Int) : Call<ActivityModel>
-
+    @GET("activity")
+    fun getActivityByTypeAndParticipants(@Query("type")  value : String, @Query ("participants") value2 : Int) : Call<ActivityModel>
 }

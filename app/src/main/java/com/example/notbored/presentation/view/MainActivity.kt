@@ -21,7 +21,7 @@ private lateinit var binding: ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: ViewModelActivity by viewModels(factoryProducer = { ViewModelActivity.Factory() })
+
     private val sharedPreference: IPreferenceHelper by lazy { PreferenceManager(applicationContext) }
 
 
@@ -93,16 +93,6 @@ class MainActivity : AppCompatActivity() {
         binding.startB.isEnabled = amount >= 0
     }
 
-    /*   //here we can see the activity
-   viewModel.activityLiveData.observe(this, Observer {
-       //activity response
-       println("activity response $it")
-   })
 
-   //example get activity random
-   viewModel.getActivityRandom()
-
-   //example get activity by participant
-   viewModel.getActivityByParticipant(3)*/
 
 }
