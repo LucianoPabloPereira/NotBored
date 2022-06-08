@@ -14,6 +14,9 @@ class ItemViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickLis
         binding.categoryTextView.text = category
         this.onItemClickListener = onItemClickListener
         this.category = category
+        itemView.setOnClickListener {
+            onItemClickListener.onItemClick(category)
+        }
 
     }
 
