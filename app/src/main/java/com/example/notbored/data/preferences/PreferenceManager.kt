@@ -10,7 +10,7 @@ open class PreferenceManager constructor(context: Context) : IPreferenceHelper {
         preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
     }
     override fun setParticipants(quantity: String) {
-        preferences.edit().putString("participant" , quantity).apply()
+        preferences.edit().putString(PARTICIPANTS , quantity).apply()
     }
 
     override fun setCategory(category: String) {
@@ -18,7 +18,7 @@ open class PreferenceManager constructor(context: Context) : IPreferenceHelper {
     }
 
     override fun getParticipants(): String {
-        return preferences.getString("participant", "") ?: ""
+        return preferences.getString(PARTICIPANTS, "") ?: ""
     }
 
     override fun getCategory(): String {
