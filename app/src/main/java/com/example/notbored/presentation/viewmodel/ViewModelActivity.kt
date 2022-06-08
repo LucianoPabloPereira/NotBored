@@ -29,6 +29,18 @@ class ViewModelActivity(private val repo: Repository) : ViewModel() {
         })
     }
 
+    fun getActivityByType(type:String) {
+        val response = repo.getActivityByType(type)
+        response.enqueue(object : Callback<ActivityModel> {
+            override fun onResponse(call: Call<ActivityModel>, response: Response<ActivityModel>) {
+                activityLiveData.value = response.body()
+            }
+            override fun onFailure(call: Call<ActivityModel>, t: Throwable) {
+                errorMessage.postValue(t.message)
+            }
+        })
+    }
+
     fun getActivityByParticipant(participants : Int) {
         val response = repo.getActivityByParticipants(participants)
         response.enqueue(object : Callback<ActivityModel> {

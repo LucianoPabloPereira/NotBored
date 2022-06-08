@@ -11,6 +11,10 @@ class RemoteDataSource {
         return RetrofitClient.getAPI(APIService::class.java).getActivityRandom()
     }
 
+    fun getActivityByType(type:String): Call<ActivityModel> {
+        return RetrofitClient.getAPI(APIService::class.java).getActivityByType(type)
+    }
+
     fun getActivityByParticipants(cantParticip: Int): Call<ActivityModel> {
         return RetrofitClient.getAPI(APIService::class.java).getActivityByParticipants(cantParticip)
     }

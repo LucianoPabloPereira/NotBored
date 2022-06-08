@@ -7,6 +7,8 @@ interface Repository {
 
     fun getActivityRandom() : Call<ActivityModel>
 
+    fun getActivityByType(type:String) : Call<ActivityModel>
+
     fun getActivityByParticipants(cantPart: Int) : Call<ActivityModel>
 
     fun getActivityByTypeAndParticipants(type:String , cantParticip: Int) : Call<ActivityModel>

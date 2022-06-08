@@ -10,6 +10,10 @@ class RepositoryImpl(private val dataSource: RemoteDataSource) : Repository {
         return dataSource.getActivityRandom()
     }
 
+    override fun getActivityByType(type: String): Call<ActivityModel> {
+        return dataSource.getActivityByType(type)
+    }
+
     override fun getActivityByParticipants(cantPart: Int): Call<ActivityModel> {
         return dataSource.getActivityByParticipants(cantPart)
     }

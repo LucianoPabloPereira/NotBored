@@ -12,6 +12,9 @@ interface APIService {
     fun getActivityRandom(): Call<ActivityModel>
 
     @GET("activity")
+    fun getActivityByType(@Query("type") type : String): Call<ActivityModel>
+
+    @GET("activity")
     fun getActivityByParticipants(@Query("participants") participants : Int) : Call<ActivityModel>
 
     @GET("activity")
