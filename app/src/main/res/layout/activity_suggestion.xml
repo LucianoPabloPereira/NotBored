@@ -9,29 +9,16 @@
     android:background="@color/background">
 
 
-    <TextView
-        android:id="@+id/activityTV"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/activitiesToolbar"
+        style="@style/ToolbarTheme"
+        app:title="@string/Activities"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="@color/background_text"
-        android:padding="8dp"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/text"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="cathegory" />
-
-    <ImageView
-        android:id="@+id/backArrowIV"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/back_arrow"
-        app:layout_constraintBottom_toBottomOf="@+id/activityTV"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/activityTV" />
+        android:background="@color/purple_500"
+        app:titleTextColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/toolbar_menu"/>
 
     <TextView
         android:id="@+id/suggestedActivityTV"
@@ -44,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityTV"
+        app:layout_constraintTop_toBottomOf="@+id/activitiesToolbar"
         />
 
     <ImageView
@@ -105,7 +92,7 @@
         app:layout_constraintTop_toTopOf="@+id/priceTV" />
 
     <TextView
-        android:id="@+id/PriceShowedTV"
+        android:id="@+id/priceShowedTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="24dp"
