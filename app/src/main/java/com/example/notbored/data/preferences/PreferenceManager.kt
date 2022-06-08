@@ -13,8 +13,16 @@ open class PreferenceManager constructor(context: Context) : IPreferenceHelper {
         preferences.edit().putString("participant" , quantity).apply()
     }
 
+    override fun setCategory(category: String) {
+        preferences.edit().putString("category" , category).apply()
+    }
+
     override fun getParticipants(): String {
         return preferences.getString("participant", "") ?: ""
+    }
+
+    override fun getCategory(): String {
+        return preferences.getString("category", "") ?: ""
     }
 
     override fun clearPrefs() {

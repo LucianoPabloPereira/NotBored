@@ -1,5 +1,6 @@
 package com.example.notbored.presentation.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -7,13 +8,19 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notbored.R
+import com.example.notbored.data.preferences.IPreferenceHelper
+import com.example.notbored.data.preferences.PreferenceManager
 import com.example.notbored.databinding.ActivityActivitiesBinding
 import com.example.notbored.presentation.view.adapter.ActivitiesAdapter
+import com.example.notbored.presentation.view.adapter.OnItemClickListener
 
 private lateinit var binding : ActivityActivitiesBinding
 private lateinit var adapter: ActivitiesAdapter
 
-class ActivitiesActivity : AppCompatActivity() {
+class ActivitiesActivity : AppCompatActivity(), OnItemClickListener {
+
+    private val sharedPreference: IPreferenceHelper by lazy { PreferenceManager(applicationContext) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityActivitiesBinding.inflate(layoutInflater)
@@ -23,7 +30,7 @@ class ActivitiesActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        adapter = ActivitiesAdapter(getCategoryList())
+        adapter = ActivitiesAdapter(getCategoryList(), this)
         binding.activitiesRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.activitiesRecyclerView.adapter = adapter
     }
@@ -32,8 +39,6 @@ class ActivitiesActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
-
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.randomButton) {
@@ -53,4 +58,10 @@ class ActivitiesActivity : AppCompatActivity() {
             resources.getString(R.string.music),
             resources.getString(R.string.busywork),
         )
+
+    override fun onItemClick(category: String) {
+        sharedPreference.setCategory(category)
+        val intent = Intent(this, ActivitiesActivity::class.java)
+        startActivity(intent)
+    }
 }
