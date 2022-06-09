@@ -54,20 +54,22 @@
             android:id="@+id/participantsIV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/participants" />
+            android:src="@drawable/participants"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/participantsTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="124dp"
-            android:gravity="start"
-            android:text="participants"
+            android:gravity="start|center_vertical"
+            android:text="Participants"
             android:textColor="@color/secondary_text"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/participantsIV"
             app:layout_constraintStart_toEndOf="@+id/participantsIV"
-            app:layout_constraintTop_toBottomOf="@+id/suggestedActivityTV" />
+            app:layout_constraintTop_toTopOf="@+id/participantsIV" />
 
         <TextView
             android:id="@+id/amountOfParticipants"
