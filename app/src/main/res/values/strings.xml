@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">NotBored</string>
     <string name="terms_and_conditions">Terms and conditions</string>
-    <string name="participants">participants</string>
+    <string name="participants">Enter the quantity of participants</string>
     <string name="type">type</string>
     <string name="start">start</string>
     <string name="price">price</string>
-    <string name="suggested_activity">suggested activity</string>
+    <string name="suggested_activity">Suggested activity</string>
     <string name="terms_and_conditions_text">Lorem ipsum dolor sit amet consectetur adipiscing elit inceptos ridiculus iaculis,
 nullam ligula elementum duis tellus maecenas nec fermentum sed dictum
 laoreet, taciti donec habitant quam purus ultricies porta posuere sociis. Cubilia

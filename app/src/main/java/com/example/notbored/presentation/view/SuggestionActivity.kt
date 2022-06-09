@@ -30,6 +30,7 @@ class SuggestionActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         toolbar = binding.activitiesToolbar
+        toolbar.title = sharedPreference.getCategory()
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
