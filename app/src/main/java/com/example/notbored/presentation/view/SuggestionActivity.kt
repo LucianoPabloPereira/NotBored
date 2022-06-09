@@ -18,9 +18,8 @@ class SuggestionActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySuggestionBinding
     private val viewModel: ViewModelActivity by viewModels(factoryProducer = { ViewModelActivity.Factory() })
     private val sharedPreference: IPreferenceHelper by lazy { PreferenceManager(applicationContext) }
-    private var isRandom: Boolean = true
-    private lateinit var toolbar: Toolbar
 
+    private var isRandom: Boolean = true
     private var participants = 0
     private lateinit var category: String
 
@@ -28,63 +27,33 @@ class SuggestionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySuggestionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setToolbar(binding.activitiesToolbar)
 
-        toolbar = binding.activitiesToolbar
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        participants = if (sharedPreference.getParticipants().isEmpty()) {
-            0
-        } else {
-            sharedPreference.getParticipants().toInt()
-        }
-
+        participants = sharedPreference.getParticipants()
         category = sharedPreference.getCategory()
 
-
-
         //here we can see the activity
-        viewModel.activityLiveData.observe(this, Observer {model ->
+        viewModel.activityLiveData.observe(this, Observer { model ->
             //activity response
             println("activity response $model")
-            showResults(model)
-
-            binding.tryAnotherB.setOnClickListener {
-                showResults(model)
-            }
+            setView(model)
         })
 
-        //example get activity random
-        viewModel.getActivityRandom()
+        setResultModel()
 
-        //example get activity by participant
-        viewModel.getActivityByParticipant(participants)
-
-        //example get activity
-        viewModel.getActivityByParticipantAndType(category, participants)
-
-
+        binding.tryAnotherB.setOnClickListener {
+            setResultModel()
+        }
     }
 
-    private fun showResults(model: ActivityModel) {
-
+    private fun setResultModel() {
         when {
-            isRandom && model.participants > 0 -> {
-                viewModel.getActivityByParticipant(participants)
-                setView(model)
-            }
-            isRandom && model.participants == 0 -> {
-                viewModel.getActivityRandom()
-                setView(model)
-            }
-            !isRandom && model.participants == 0 -> {
-                viewModel.getActivityByType(category)
-                setView(model)
-            }
-            !isRandom && model.participants > 0 -> {
+            isRandom && participants > 0 -> viewModel.getActivityByParticipant(participants)
+            !isRandom && participants == 0 -> viewModel.getActivityByType(category)
+            !isRandom && participants > 0 -> {
                 viewModel.getActivityByParticipantAndType(category, participants)
-                setView(model)
             }
+            else -> viewModel.getActivityRandom()
         }
     }
 
@@ -108,7 +77,9 @@ class SuggestionActivity : AppCompatActivity() {
         }
     }
 
-
-
-
+    private fun setToolbar(toolbar: Toolbar) {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener { onBackPressed() }
+    }
 }

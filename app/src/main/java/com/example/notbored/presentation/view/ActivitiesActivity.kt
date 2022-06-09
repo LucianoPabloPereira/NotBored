@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notbored.R
 import com.example.notbored.data.preferences.IPreferenceHelper
@@ -25,10 +25,7 @@ class ActivitiesActivity : AppCompatActivity(), OnItemClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityActivitiesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val toolbar = binding.activitiesToolbar
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setToolbar(binding.activitiesToolbar)
 
         adapter = ActivitiesAdapter(getCategoryList(), this)
         binding.activitiesRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -42,7 +39,8 @@ class ActivitiesActivity : AppCompatActivity(), OnItemClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.randomButton) {
-            Toast.makeText(this, "get random activity", Toast.LENGTH_SHORT).show()
+            sharedPreference.setCategory("")
+            goToSuggestion()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -61,7 +59,17 @@ class ActivitiesActivity : AppCompatActivity(), OnItemClickListener {
 
     override fun onItemClick(category: String) {
         sharedPreference.setCategory(category)
+        goToSuggestion()
+    }
+
+    private fun goToSuggestion() {
         val intent = Intent(this, SuggestionActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun setToolbar(toolbar: Toolbar) {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener { onBackPressed() }
     }
 }

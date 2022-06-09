@@ -7,14 +7,12 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.WindowManager
 import android.widget.ImageView
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.notbored.R
 import com.example.notbored.data.preferences.IPreferenceHelper
 import com.example.notbored.data.preferences.PreferenceManager
 import com.example.notbored.databinding.ActivityMainBinding
-import com.example.notbored.presentation.viewmodel.ViewModelActivity
 
 
 private lateinit var binding: ActivityMainBinding
@@ -43,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                     query: CharSequence, start: Int,
                     before: Int, count: Int
                 ) {
-                    if (!query.isEmpty()) checkAmountParticipant(Integer.parseInt(query.toString()))
+                    if (!query.isEmpty()) setStartButtonEnabled(Integer.parseInt(query.toString()))
                 }
             })
 
@@ -64,7 +62,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveParticipant() {
-        sharedPreference.setParticipants(binding.numberOfParticipantsET.text.toString())
+        val inputParticipants = binding.numberOfParticipantsET.text.toString()
+        val intValue = if (inputParticipants.isEmpty()) 0 else inputParticipants.toInt()
+        sharedPreference.setParticipants(intValue)
     }
 
     /**
@@ -89,8 +89,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun checkAmountParticipant(amount: Int) {
-        binding.startB.isEnabled = amount >= 0
+    fun setStartButtonEnabled(amount: Int) {
+        binding.startB.isEnabled = amount < 0
     }
 
 

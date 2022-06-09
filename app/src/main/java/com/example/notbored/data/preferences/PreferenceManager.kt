@@ -9,16 +9,16 @@ open class PreferenceManager constructor(context: Context) : IPreferenceHelper {
     init {
         preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
     }
-    override fun setParticipants(quantity: String) {
-        preferences.edit().putString(PARTICIPANTS , quantity).apply()
+    override fun setParticipants(quantity: Int) {
+        preferences.edit().putInt(PARTICIPANTS , quantity).apply()
     }
 
     override fun setCategory(category: String) {
         preferences.edit().putString("category" , category).apply()
     }
 
-    override fun getParticipants(): String {
-        return preferences.getString(PARTICIPANTS, "") ?: ""
+    override fun getParticipants(): Int {
+        return preferences.getInt(PARTICIPANTS, 0) ?: 0
     }
 
     override fun getCategory(): String {
