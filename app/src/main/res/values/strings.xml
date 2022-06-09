@@ -2,9 +2,9 @@
     <string name="app_name">NotBored</string>
     <string name="terms_and_conditions">Terms and conditions</string>
     <string name="participants">Enter the quantity of participants</string>
-    <string name="type">type</string>
-    <string name="start">start</string>
-    <string name="price">price</string>
+    <string name="type">Type</string>
+    <string name="start">Start</string>
+    <string name="price">Price</string>
     <string name="suggested_activity">Suggested activity</string>
     <string name="terms_and_conditions_text">Lorem ipsum dolor sit amet consectetur adipiscing elit inceptos ridiculus iaculis,
 nullam ligula elementum duis tellus maecenas nec fermentum sed dictum
@@ -53,4 +53,9 @@ nullam pellentesque.</string>
     <string name="relaxation">Relaxation</string>
     <string name="music">Music</string>
     <string name="busywork">Busywork</string>
+
+    // Error Suggestions
+    <string name="default_error">Results not found for requested config</string>
+    <string name="default_no_activity">N/A</string>
+    <string name="default_no_results">No results</string>
 </resources>

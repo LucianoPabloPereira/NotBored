@@ -13,9 +13,8 @@ import retrofit2.Response
 
 class ViewModelActivity(private val repo: Repository) : ViewModel() {
 
-    val activityLiveData = MutableLiveData<ActivityModel>()
+    val activityLiveData = MutableLiveData<ActivityModel?>()
     val errorMessage = MutableLiveData<String>()
-
 
     fun getActivityRandom() {
         val response = repo.getActivityRandom()
@@ -25,6 +24,7 @@ class ViewModelActivity(private val repo: Repository) : ViewModel() {
             }
             override fun onFailure(call: Call<ActivityModel>, t: Throwable) {
                 errorMessage.postValue(t.message)
+                activityLiveData.value = null
             }
         })
     }
@@ -37,6 +37,7 @@ class ViewModelActivity(private val repo: Repository) : ViewModel() {
             }
             override fun onFailure(call: Call<ActivityModel>, t: Throwable) {
                 errorMessage.postValue(t.message)
+                activityLiveData.value = null
             }
         })
     }
@@ -49,6 +50,7 @@ class ViewModelActivity(private val repo: Repository) : ViewModel() {
             }
             override fun onFailure(call: Call<ActivityModel>, t: Throwable) {
                 errorMessage.postValue(t.message)
+                activityLiveData.value = null
             }
         })
     }
@@ -61,12 +63,10 @@ class ViewModelActivity(private val repo: Repository) : ViewModel() {
             }
             override fun onFailure(call: Call<ActivityModel>, t: Throwable) {
                 errorMessage.postValue(t.message)
+                activityLiveData.value = null
             }
         })
     }
-
-
-
 
     class Factory() : ViewModelProvider.NewInstanceFactory() {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {

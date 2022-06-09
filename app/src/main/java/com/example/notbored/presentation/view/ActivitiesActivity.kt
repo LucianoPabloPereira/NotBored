@@ -40,6 +40,7 @@ class ActivitiesActivity : AppCompatActivity(), OnItemClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.randomButton) {
             sharedPreference.setCategory("")
+            sharedPreference.setRandom(true)
             goToSuggestion()
         }
         return super.onOptionsItemSelected(item)
@@ -58,7 +59,8 @@ class ActivitiesActivity : AppCompatActivity(), OnItemClickListener {
         )
 
     override fun onItemClick(category: String) {
-        sharedPreference.setCategory(category)
+        sharedPreference.setCategory(category.lowercase())
+        sharedPreference.setRandom(false)
         goToSuggestion()
     }
 
