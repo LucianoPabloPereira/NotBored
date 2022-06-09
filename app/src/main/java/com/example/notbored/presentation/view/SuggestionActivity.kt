@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
+import com.example.notbored.R
 import com.example.notbored.data.model.ActivityModel
 import com.example.notbored.data.preferences.IPreferenceHelper
 import com.example.notbored.data.preferences.PreferenceManager
@@ -30,6 +31,7 @@ class SuggestionActivity : AppCompatActivity() {
 
         participants = sharedPreference.getParticipants()
         category = sharedPreference.getCategory()
+        isRandom = sharedPreference.isRandom()
 
         setToolbar(binding.activitiesToolbar)
 
@@ -59,18 +61,23 @@ class SuggestionActivity : AppCompatActivity() {
         }
     }
 
-    private fun setView(model: ActivityModel) {
+    private fun setView(model: ActivityModel?) {
         with (binding){
-            activitiesToolbar.title = model.type
-            suggestedActivityTV.text = model.activity
-            amountOfParticipants.text = model.participants.toString()
-            priceShowedTV.text = model.price.toString()
+            activitiesToolbar.title = model?.type ?: resources.getString(R.string.default_no_results)
+            suggestedActivityTV.text = model?.activity ?: resources.getString(R.string.default_error)
+            amountOfParticipants.text = model?.let {
+                it.participants.toString()
+            } ?: resources.getString(R.string.default_no_activity)
+
+            priceShowedTV.text = model?.let {
+                it.price.toString()
+            } ?: resources.getString(R.string.default_no_activity)
 
             if (isRandom) {
                 randomActivityIV.visibility = View.VISIBLE
                 randomActivityTV.visibility = View.VISIBLE
                 randomActivityShowedTV.apply {
-                    text = model.type
+                    text = model?.type ?: resources.getString(R.string.default_no_activity)
                     visibility = View.VISIBLE
                 }
             }else {
@@ -82,7 +89,10 @@ class SuggestionActivity : AppCompatActivity() {
     private fun setToolbar(toolbar: Toolbar) {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.activitiesToolbar.title= category
+        binding.activitiesToolbar.title= capitalizeWord(category)
         toolbar.setNavigationOnClickListener { onBackPressed() }
     }
+
+    private fun capitalizeWord(word: String): String =
+        word.replaceFirstChar { it.uppercase() }
 }

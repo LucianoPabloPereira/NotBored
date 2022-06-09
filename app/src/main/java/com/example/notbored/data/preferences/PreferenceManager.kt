@@ -17,6 +17,10 @@ open class PreferenceManager constructor(context: Context) : IPreferenceHelper {
         preferences.edit().putString("category" , category).apply()
     }
 
+    override fun setRandom(isRandom: Boolean) {
+        preferences.edit().putBoolean("isRandom" , isRandom).apply()
+    }
+
     override fun getParticipants(): Int {
         return preferences.getInt(PARTICIPANTS, 0) ?: 0
     }
@@ -25,6 +29,9 @@ open class PreferenceManager constructor(context: Context) : IPreferenceHelper {
         return preferences.getString("category", "") ?: ""
     }
 
+    override fun isRandom(): Boolean {
+        return preferences.getBoolean("isRandom", false)
+    }
     override fun clearPrefs() {
         preferences.edit().clear().apply()
     }
