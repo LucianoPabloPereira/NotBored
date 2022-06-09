@@ -1,4 +1,4 @@
-package com.example.notbored.model
+package com.example.notbored.data.model
 
 enum class ActivityType {
     EDUCATION,
