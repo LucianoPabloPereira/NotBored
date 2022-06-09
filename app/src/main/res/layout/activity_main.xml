@@ -15,33 +15,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textColor="@color/text"
+        android:textColor="@color/primary"
         android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/img_activities"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notBoredTV"
+        app:layout_constraintBottom_toTopOf="@id/participantsTV"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/participantsTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="224dp"
-        android:textSize="24sp"
+        android:layout_marginTop="30dp"
         android:text="@string/participants"
-        android:textColor="@color/text"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/numberOfParticipantsET"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notBoredTV" />
+        app:layout_constraintTop_toBottomOf="@id/imageview" />
 
     <EditText
         android:id="@+id/numberOfParticipantsET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:hint="Amount of participants"
         android:inputType="number"
         android:textColor="@color/button"
-        android:hint="amount of participants"
+        app:layout_constraintBottom_toTopOf="@id/startB"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/participantsTV" />
 
@@ -49,21 +65,25 @@
         android:id="@+id/startB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:backgroundTint="@color/background_button"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/primary"
         android:text="@string/start"
-        android:textColor="@color/text"
-        app:layout_constraintTop_toBottomOf="@+id/numberOfParticipantsET"
-        tools:layout_editor_absoluteX="16dp" />
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberOfParticipantsET" />
 
     <TextView
         android:id="@+id/termsAndConditionsTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/terms_and_conditions"
-        android:textColor="@color/text"
         android:clickable="true"
+        android:text="@string/terms_and_conditions"
+        android:textColor="@color/primary_text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startB" />

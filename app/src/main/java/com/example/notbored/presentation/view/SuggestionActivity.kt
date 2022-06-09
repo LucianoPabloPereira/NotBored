@@ -27,10 +27,12 @@ class SuggestionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySuggestionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setToolbar(binding.activitiesToolbar)
 
         participants = sharedPreference.getParticipants()
         category = sharedPreference.getCategory()
+
+        setToolbar(binding.activitiesToolbar)
+
 
         //here we can see the activity
         viewModel.activityLiveData.observe(this, Observer { model ->
@@ -80,6 +82,7 @@ class SuggestionActivity : AppCompatActivity() {
     private fun setToolbar(toolbar: Toolbar) {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.activitiesToolbar.title= category
         toolbar.setNavigationOnClickListener { onBackPressed() }
     }
 }
