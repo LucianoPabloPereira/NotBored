@@ -37,8 +37,7 @@ class SuggestionActivity : AppCompatActivity() {
         //here we can see the activity
         viewModel.activityLiveData.observe(this, Observer { model ->
             //activity response
-            println("activity response $model")
-            setView(model)
+            model.activity?.let { setView(model) } ?: binding.suggestedActivityTV.setText("Results not found for requested config")
         })
 
         setResultModel()
