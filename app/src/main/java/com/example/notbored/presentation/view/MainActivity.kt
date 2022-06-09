@@ -88,11 +88,7 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-
     fun setStartButtonEnabled(amount: Int) {
-        binding.startB.isEnabled = amount < 0
+        binding.startB.isEnabled = amount >= 0
     }
-
-
-
 }
